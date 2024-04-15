@@ -51,6 +51,9 @@ function displayLibrary() {
         if (book.readStatus === 'unread') {
             newBtn[0].style.display = 'none'
             newBtn[1].style.display = 'block'
+        } else {
+            newBtn[0].style.display = 'block'
+            newBtn[1].style.display = 'none'
         }
     })
 }
