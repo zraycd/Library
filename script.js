@@ -1,29 +1,27 @@
 const myLibrary = []
-
+let i = 1
 function addBookToLibrary(book) {
     myLibrary.push(book)
 }
 function displayLibrary() {
     const bookContainer = document.querySelector('.container')
-
+    const newDiv = [
+        document.createElement('div'),
+        document.createElement('div'),
+        document.createElement('div')
+    ]
+    const newBtn = [
+        document.createElement('button'),
+        document.createElement('button'),
+        document.createElement('button')
+    ]
+    let newBook = document.createElement('div')
+    newBook.classList.add('book')
+    bookContainer.appendChild(newBook)
     myLibrary.forEach(book => {
-        let i = 1
-        const newDiv = [
-            document.createElement('div'),
-            document.createElement('div'),
-            document.createElement('div')
-        ]
-        const newBtn = [
-            document.createElement('button'),
-            document.createElement('button'),
-            document.createElement('button')
-        ]
         let bookTitle = book.title
         let bookAuthor = book.author
         let bookPageCount = book.pageCount
-        let newBook = document.createElement('div')
-        newBook.classList.add('book')
-        bookContainer.appendChild(newBook)
         let currentBook = document.querySelectorAll('.book')[i]
 
         newDiv[0].innerText = bookTitle
@@ -50,11 +48,10 @@ function displayLibrary() {
         currentBook.appendChild(newBtn[1])
         currentBook.appendChild(newBtn[2])
 
-        if (book.readStatus = 'unread') {
+        if (book.readStatus === 'unread') {
             newBtn[0].style.display = 'none'
             newBtn[1].style.display = 'block'
         }
-        i++
     })
 }
 class Book {
@@ -82,11 +79,11 @@ document.querySelector('.submit').addEventListener('click', () => {
     } else {
         readStatus = 'unread'
     }
-    console.log(readStatus)
     let addBook = new Book(title, author, pageCount, readStatus)
 
     addBookToLibrary(addBook)
     displayLibrary()
+    i++
 
     document.querySelector('#addBtn').style.display = 'block';
     document.querySelector('.form').style.display = 'none'
