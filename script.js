@@ -86,8 +86,25 @@ document.querySelector('.submit').addEventListener('click', () => {
 
     addBookToLibrary(addBook)
     displayLibrary()
+    readButtoFunctionality()
     i++
 
     document.querySelector('#addBtn').style.display = 'block';
     document.querySelector('.form').style.display = 'none'
 })
+function readButtoFunctionality() {
+    document.querySelectorAll('.readButton').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList[1] === 'read') {
+                btn.style.display = 'none'
+                btn.nextElementSibling.style.display = 'block'
+            } else if (btn.classList[1] === 'unread') {
+                btn.style.display = 'none'
+                btn.previousElementSibling.style.display = 'block'
+            } else {
+                btn.parentElement.style.display = 'none'
+            }
+        })
+    })
+}
+readButtoFunctionality()
